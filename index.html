@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Start Screen</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+  <style>
+    /* Reset styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Courier New', monospace;
+    }
+
+    /* Body and Background */
+    body {
+      background-color: #0e0e0e;
+      color: #c7b299;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    /* Start Screen Container */
+    #start-screen {
+      text-align: center;
+      position: relative;
+      width: 800px;
+      height: 600px;
+    }
+
+    /* Header */
+    .header p {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    /* Menu Options */
+    .menu ul {
+      list-style: none;
+    }
+
+    .menu li {
+      font-size: 28px;
+      margin: 15px 0;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+
+    .menu li:hover {
+      color: #ffcc66;
+    }
+
+    /* Background Elements */
+    .background-elements {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+    }
+
+    .coffee-cup, .milk-carton {
+      width: 100px;
+      height: auto;
+      opacity: 0.8;
+      animation: float 4s infinite alternate;
+    }
+
+    /* Floating Animation */
+    @keyframes float {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(-10px);
+      }
+    }
+
+    
+  </style>
+<body>
+  <div id="start-screen">
+    <div class="header">
+      <p>Welcome, Barista</p>
+    </div>
+
+    <div class="menu">
+      <ul>
+        <li onclick="startGame()">Start Game</li>
+        <li onclick="loadGame()">Load Game</li>
+        <li onclick="endlessMode()">Endless Mode</li>
+        <li onclick="openOptions()">Options</li>
+        <li onclick="quitGame()">Quit</li>
+      </ul>
+    </div>
+
+    <div class="background-elements">
+      <img src="coffee-cup.png" alt="Coffee Cup" class="coffee-cup">
+      <img src="milk-carton.png" alt="Milk Carton" class="milk-carton">
+    </div>
+
+    <audio id="background-music" loop>
+      <source src="background-music.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

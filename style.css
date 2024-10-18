@@ -1,0 +1,170 @@
+<style>
+
+
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Courier New', Courier, monospace; /* Retro terminal font */
+  }
+
+  /* Body Styling */
+  body {
+    background-color: #1b1b1b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+  /* Game Container */
+  #game-container {
+    display: flex;
+    width: 900px;
+    height: 600px;
+    background-color: #2b2b2b;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.7);
+  }
+
+  /* Left Panel - Customer & Dialogue Section */
+  #left-panel {
+    width: 55%;
+    background-color: #333;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #customer {
+    width: 80%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .customer-img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  #dialogue-box {
+    background-color: #444;
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);
+  }
+
+  #character-name {
+    font-weight: bold;
+    color: #d9d9d9;
+    margin-bottom: 5px;
+  }
+
+  #dialogue-text {
+    color: #e6e6e6;
+  }
+
+  /* Right Panel - Coffee-Making Interface */
+  #right-panel {
+    width: 45%;
+    background-color: #222;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-left: 2px solid #111;
+  }
+
+  /* Ingredients Section */
+  #ingredients {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .ingredient-button {
+    background-color: #5c5c5c;
+    color: #f0f0f0;
+    border: 1px solid #333;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s;
+  }
+
+  .ingredient-button:hover {
+    background-color: #717171;
+  }
+
+  /* Selected Ingredients Display */
+  #selected-ingredients {
+    background-color: #444;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.8);
+  }
+
+  #ingredient-list {
+    list-style: none;
+    color: #f0f0f0;
+    margin-top: 10px;
+  }
+
+  #brew-button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 18px;
+    margin-top: 10px;
+  }
+
+  #brew-button:hover {
+    background-color: #45a049;
+  }
+
+  /* Feedback Text */
+  #feedback {
+    color: #f0f0f0;
+    margin-top: 10px;
+    text-align: center;
+  }
+  #dialogue-box {
+    background-color: #444;
+    width: 100%;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 15px;
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);
+    text-align: center;
+  }
+
+  #next-dialogue-button {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  #next-dialogue-button:hover {
+    background-color: #45a049;
+  }
+
+</style>

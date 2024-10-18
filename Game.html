@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barista Game - Coffee Talk Clone</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Courier New', Courier, monospace;
+    }
+
+    /* Body Styling */
+    body {
+      background-color: #1b1b1b;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Game Container */
+    #game-container {
+      display: flex;
+      width: 900px;
+      height: 600px;
+      background-color: #2b2b2b;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.7);
+    }
+
+    /* Left Panel - Customer & Dialogue */
+    #left-panel {
+      width: 55%;
+      background-color: #333;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #customer {
+      width: 80%;
+      height: 60%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .customer-img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    #dialogue-box {
+      background-color: #444;
+      width: 100%;
+      padding: 15px;
+      border-radius: 8px;
+      margin-top: 15px;
+      box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);
+      text-align: center;
+    }
+
+    #character-name {
+      font-weight: bold;
+      color: #d9d9d9;
+      margin-bottom: 5px;
+    }
+
+    #dialogue-text {
+      color: #e6e6e6;
+    }
+
+    #next-dialogue-button {
+      margin-top: 10px;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #next-dialogue-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Right Panel - Coffee-Making Interface */
+    #right-panel {
+      width: 45%;
+      background-color: #222;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-left: 2px solid #111;
+      display: none; /* Hidden by default, shown later */
+    }
+
+    /* Coffee Cup with Fill Animation */
+    #coffee-cup {
+      position: relative;
+      width: 150px;
+      height: 200px;
+      border: 2px solid black;
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    #cup-fill {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 0%;
+      background-color: #6f4e37;
+      transition: height 1s ease-in-out;
+    }
+
+    /* Ingredient Buttons */
+    #ingredients {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    #ingredients button {
+      margin: 5px;
+      padding: 10px;
+      background-color: #f0c040;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #ingredients button:hover {
+      background-color: #e0a020;
+    }
+
+    /* Brew and Trash Buttons */
+    #brew-button, #trash-button {
+      margin: 10px;
+      padding: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #brew-button:hover {
+      background-color: #45a049;
+    }
+
+    #trash-button {
+      background-color: #ff4d4d;
+    }
+
+    #trash-button:hover {
+      background-color: #ff1a1a;
+    }
+
+    /* Feedback Section */
+    #feedback {
+      margin-top: 10px;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Notepad Styling */
+    #notepad {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #f7f7f7;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      max-width: 300px;
+      text-align: left;
+    }
+
+    #notepad h3 {
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    #recipes-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    #recipes-list li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="game-container">
+    <!-- Left Side: Customer and Dialogue -->
+    <div id="left-panel">
+      <div id="customer">
+        <img id="customer-img" src="customer1.png" alt="Customer Image" class="customer-img">
+      </div>
+      <div id="dialogue-box">
+        <p id="character-name">Customer:</p>
+        <p id="dialogue-text"></p>
+        <button id="next-dialogue-button">Next</button>
+      </div>
+    </div>
+
+    <!-- Right Side: Coffee-Making Interface -->
+    <div id="right-panel">
+      <div id="coffee-cup">
+        <div id="cup-fill"></div>
+      </div>
+      <div id="ingredients">
+        <button onclick="addIngredient('Milk')">Milk</button>
+        <button onclick="addIngredient('Ginger')">Ginger</button>
+        <button onclick="addIngredient('Coffee')">Coffee</button>
+        <button onclick="addIngredient('Honey')">Honey</button>
+        <button onclick="addIngredient('Cinnamon')">Cinnamon</button>
+        <button onclick="addIngredient('Mint')">Mint</button>
+      </div>
+      <button id="brew-button" onclick="brewDrink()">Brew</button>
+      <button id="trash-button" onclick="trashDrink()">Trash Drink</button>
+      <p id="feedback"></p>
+      <p id="trash-counter">Trash Attempts Left: 5</p>
+    </div>
+  </div>
+
+  <div id="notepad">
+    <h3>Notepad</h3>
+    <ul id="recipes-list">
+      <li><strong>Sweet Coffee:</strong> Coffee + Honey</li>
+      <li><strong>Spiced Latte:</strong> Milk + Ginger</li>
+      <li><strong>Cinnamon Coffee:</strong> Coffee + Cinnamon</li>
+      <li><strong>Honey Milk:</strong> Milk + Honey + Cinnamon</li>
+    </ul>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
